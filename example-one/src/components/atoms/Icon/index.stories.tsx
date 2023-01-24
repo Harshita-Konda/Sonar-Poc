@@ -32,7 +32,7 @@ Grid.args = {
 };
 export const People = Template.bind({});
 People.args = {
-  icon:"add_circle",
+  icon:<PeopleAltOutlinedIcon/>,
 };
 export const Gavel = Template.bind({});
 Gavel.args = {

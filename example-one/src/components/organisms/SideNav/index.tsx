@@ -12,21 +12,43 @@ import ManageAccountsOutlinedIcon from "@mui/icons-material/ManageAccountsOutlin
 import WysiwygIcon from "@mui/icons-material/Wysiwyg";
 import { Stack } from "@mui/system";
 import MuiCard from "../../molecules/Card";
+import theme from "../../../themes";
 
 const SideNav = () => {
   const vals = [
-    [
-      <GridViewOutlinedIcon />,
-      <PeopleAltOutlinedIcon />,
-      <GavelIcon />,
-      <DescriptionIcon />,
-      <AssessmentOutlinedIcon />,
-      <ManageAccountsOutlinedIcon />,
-      <WysiwygIcon />,
-    ],
+    {
+      iconOf: <GridViewOutlinedIcon />,
+      name: "Home",
+    },
+    {
+      iconOf: <PeopleAltOutlinedIcon />,
+      name: "Candidates",
+    },
+    {
+      iconOf: <GavelIcon />,
+      name: "Adverse Actions",
+    },
+    {
+      iconOf: <DescriptionIcon />,
+      name: "Logs",
+    },
+    {
+      iconOf: <AssessmentOutlinedIcon />,
+      name: "Analytics",
+    },
+    {
+      iconOf: <ManageAccountsOutlinedIcon />,
+      name: "Account",
+    },
+    {
+      iconOf: <WysiwygIcon />,
+      name: "Screenings",
+    },
   ];
+
+
   return (
-    <div>
+    <Box>
       <Box
         m={1} //margin
         display="flex"
@@ -48,74 +70,49 @@ const SideNav = () => {
             backgroundColor: "white",
           }}
         >
-          {vals.map((e) => {
-            return (
-              <>
-                <Stack spacing={3}>
-                  <Typography
-                    variant="h6"
-                    fontWeight={"bold"}
-                    sx={{
-                      color: "rebeccapurple",
-                    }}
-                  >
-                    RECRUIT
-                  </Typography>
-                  <Grid
-                    spacing={5}
-                    sx={{
-                      display: "flex",
-                      p: "3px",
-                      "&:hover": {
-                        backgroundColor: "whitesmoke",
-                        borderRadius: 2,
-                      },
-                    }}
-                  >
-                    <MuiIcon icon={e[0]} />
-                    <Typography
-                      sx={{
-                        padding: "3px",
-                      }}
-                    >
-                      Home
-                    </Typography>
-                  </Grid>
-                  <Grid spacing={5} style={{ display: "flex" }}>
-                    {/* <MuiIcon icon={e[1]} /> */}
-                    {e[1]}
-                    <Typography sx={{ padding: "3px" }}>Candidates</Typography>
-                  </Grid>
-                  <Grid spacing={5} style={{ display: "flex" }}>
-                    <MuiIcon icon={e[2]} />
-                    <Typography sx={{ padding: "3px" }}>
-                      Adverse Actions
-                    </Typography>
-                  </Grid>
-                  <Grid spacing={5} style={{ display: "flex" }}>
-                    <MuiIcon icon={e[3]} />
-                    <Typography sx={{ padding: "3px" }}>Logs</Typography>
-                  </Grid>
-                  <Grid spacing={5} style={{ display: "flex" }}>
-                    <MuiIcon icon={e[4]} />
-                    <Typography sx={{ padding: "3px" }}>Analytics</Typography>
-                  </Grid>
-                  <Grid spacing={5} style={{ display: "flex" }}>
-                    <MuiIcon icon={e[5]} />
-                    <Typography sx={{ padding: "3px" }}>Account</Typography>
-                  </Grid>
-                  <Grid spacing={5} style={{ display: "flex" }}>
-                    <MuiIcon icon={e[6]} />
-                    <Typography sx={{ padding: "3px" }}>Screenings</Typography>
-                  </Grid>
+          <Typography
+            variant="h5"
+            fontWeight={"bold"}
+            sx={{
+              color: theme.palette.primary.main,
+              padding:"8px"
+            }}
+          >
+            RECRUIT
+          </Typography>
+          <Stack spacing={2}>
+          {vals.map((e) => (
+            <>
+              <Grid 
+              spacing={5}
+                sx={{
+                  display: "flex",
+                  p: "3px",
+                  "&:hover": {
+                    backgroundColor:"whitesmoke",
+                    color:theme.palette.primary.main,
+                    borderRadius: 2,
+                  },
+                }}
+              ><Stack direction={"row"}spacing={1}>
+                <MuiIcon icon={e.iconOf} />
+                
+                <Typography variant="body1"
+                  sx={{
+                    padding: "3px",
+                  }}
+                >
+                {e.name}
+                </Typography>
                 </Stack>
-              </>
-            );
-          })}
+              </Grid>
+            </>
+          ))}
+          </Stack>
         </Box>
       </Box>
       <MuiCard />
-    </div>
+    </Box>
   );
 };
 
