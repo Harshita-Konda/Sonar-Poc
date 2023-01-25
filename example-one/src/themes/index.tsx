@@ -14,7 +14,7 @@ const theme = createTheme({
             fontSize:"22px",
         },
         h5:{
-            
+            fontFamily:"cursive",
         }
     },
   palette: {
