@@ -13,6 +13,9 @@ import WysiwygIcon from "@mui/icons-material/Wysiwyg";
 import { Stack } from "@mui/system";
 import MuiCard from "../../molecules/Card";
 import theme from "../../../themes";
+import { styled } from "@mui/material";
+import MuiIconButton from "../../atoms/IconButton";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 const SideNav = () => {
   const vals = [
@@ -46,20 +49,38 @@ const SideNav = () => {
     },
   ];
 
+  const StyleTypography = styled(Typography)({
+    color: theme.palette.primary.main,
+    padding: "8px",
+    fontWeight: theme.typography.h1.fontWeight,
+    fontSize: theme.typography.h1.fontSize,
+  });
+
+  const StyleBox = styled(Box)({
+    maxWidth: "250px",
+    maxHeight: "800px",
+    backgroundColor: "lightgray",
+    borderRadius: "5px",
+  });
+
+  const StyleGrid = styled(Grid)({
+    
+    display: "flex",
+    p: "3px",
+    "&:hover": {
+      backgroundColor: "whitesmoke",
+      color: theme.palette.primary.main,
+      borderRadius: 2,
+    },
+  });
 
   return (
     <Box>
-      <Box
+      <StyleBox
         m={1} //margin
         display="flex"
         justifyContent="flex-start"
         alignItems="flex-start"
-        sx={{
-          maxWidth: "250px",
-          maxHeight: "800px",
-          backgroundColor: "lightgray",
-          borderRadius: "5px",
-        }}
       >
         <Box
           m={1}
@@ -70,48 +91,43 @@ const SideNav = () => {
             backgroundColor: "white",
           }}
         >
-          <Typography
-            variant="h5"
-            fontWeight={"bold"}
-            sx={{
-              color: theme.palette.primary.main,
-              padding:"8px"
-            }}
-          >
-            RECRUIT
-          </Typography>
+          <StyleTypography>RECRUIT</StyleTypography>
           <Stack spacing={2}>
-          {vals.map((e) => (
-            <>
-              <Grid 
-              spacing={5}
-                sx={{
-                  display: "flex",
-                  p: "3px",
-                  "&:hover": {
-                    backgroundColor:"whitesmoke",
-                    color:theme.palette.primary.main,
-                    borderRadius: 2,
-                  },
-                }}
-              ><Stack direction={"row"}spacing={1}>
-                <MuiIcon icon={e.iconOf} />
-                
-                <Typography variant="body1"
-                  sx={{
-                    padding: "3px",
-                  }}
+            {vals.map((e) => (
+              <>
+                <StyleGrid
+                  spacing={5}
+                  // sx={{
+                  //   display: "flex",
+                  //   p: "3px",
+                  //   "&:hover": {
+                  //     backgroundColor: "whitesmoke",
+                  //     color: theme.palette.primary.main,
+                  //     borderRadius: 2,
+                  //   },
+                  // }}
                 >
-                {e.name}
-                </Typography>
-                </Stack>
-              </Grid>
-            </>
-          ))}
+                  <Stack direction={"row"} spacing={1}>
+                    <MuiIcon icon={e.iconOf} />
+
+                    <Typography
+                      variant="subtitle1"
+                      sx={{
+                        padding: "3px",
+                      }}
+                    >
+                      {e.name}
+                    </Typography>
+                  </Stack>
+                </StyleGrid>
+              </>
+            ))}
           </Stack>
         </Box>
-      </Box>
-      <MuiCard />
+      </StyleBox>
+      <MuiCard>
+        <MuiIconButton icon={<LogoutIcon />}></MuiIconButton>
+      </MuiCard>
     </Box>
   );
 };

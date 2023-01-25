@@ -3,7 +3,7 @@ import React from "react";
 interface IconProps{
   icon:React.ReactNode | string;
   sx?:React.CSSProperties,
-  iconColor?:	'inherit'
+ iconColor?:	'inherit'
   | 'action'
   | 'disabled'
   | 'primary'

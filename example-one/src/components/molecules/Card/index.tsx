@@ -1,10 +1,16 @@
 import { Avatar, Card, CardHeader, Grid, Box } from "@mui/material";
 import React from "react";
 
-import LogoutIcon from "@mui/icons-material/Logout";
-import MuiIconButton from "../../atoms/IconButton";
+// import LogoutIcon from "@mui/icons-material/Logout";
+// import MuiIconButton from "../../atoms/IconButton";
 
-const MuiCard = () => {
+interface CardProps{
+  children?:React.ReactElement,
+  color?:string,
+}
+
+const MuiCard = (props:CardProps) => {
+  const {children}=props;
   return (
     <div>
       <Box
@@ -28,12 +34,14 @@ const MuiCard = () => {
                   display: "flex",
                 }}
               >
-                <MuiIconButton icon={<LogoutIcon/>}></MuiIconButton>
+                {/* <MuiIconButton icon={<LogoutIcon/>}></MuiIconButton> */}
+                {children}
               </Grid>
             }
             title="James Rodriguez"
             subheader="James.co"
           />
+          {/* {children} */}
         </Card>
       </Box>
     </div>
